@@ -29,8 +29,12 @@ public class LandscapeVisual : MonoBehaviour
             {
                 Debug.Log(creator.HeightMap[x, y]);
                 var position = new Vector3(x, creator.HeightMap[x, y], y);
-                var cell = Instantiate(CellPrefab[creator.HeightMap[x, y]], position, Quaternion.identity);
-                cell.transform.parent = _prefabsParent;
+                if (CellPrefab[creator.HeightMap[x, y]] != null)
+                {
+                    var cell = Instantiate(CellPrefab[creator.HeightMap[x, y]], position, Quaternion.identity);
+                    cell.transform.parent = _prefabsParent;
+                }
+
             }
         }
     }
